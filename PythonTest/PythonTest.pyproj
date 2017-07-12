@@ -22,7 +22,30 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="powerof2\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="powerof2\powerof2serie.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PythonTest.py" />
+    <Compile Include="search\depthfirst.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="search\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ultility\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="powerof2\" />
+    <Folder Include="search\" />
+    <Folder Include="ultility\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="search\path.JPG" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
