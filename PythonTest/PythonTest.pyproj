@@ -29,7 +29,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PythonTest.py" />
-    <Compile Include="search\depthfirst.py">
+    <Compile Include="search\searchservice.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="search\__init__.py">
