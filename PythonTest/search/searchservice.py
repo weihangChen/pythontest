@@ -1,13 +1,23 @@
 import numpy as np
 #https://www.youtube.com/watch?v=j1H3jAAGlEA
+#http://bradley.bradley.edu/~chris/searches.html
 #the simulated path can be viewed from path.jpg
-
+#stack push, pop, last in, first out, add to top
+#https://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/Stacks%20and%20Queues.html
+#https://en.wikibooks.org/wiki/Algorithm_Implementation/Viterbi_algorithm
+#todo, it is ok to keep the evaluate first path function, just need to introduct a leveling function, so before going down to next level, all the pathes are evaulated and only keep the n-best for beam search
 
 class Node():
     def __init__(self, name : str):
         self.name = name
         #list of destination
         self.destinations = []
+
+class InformedNode(Node):
+    def __init__(self, name : str, probability : int): 
+        super(InformedNode, self, name).__init__(name)
+        self.probability = probability
+
 
 class EvaulationResult():
     def __init__(self):
@@ -49,11 +59,15 @@ class Search():
         self.nc.destinations.append(self.ne)
         #d
         self.nd.destinations.append(self.ng)
-        
+        #it starts from ns
         self.start = self.ns
+        #it ends at ng
         self.end = self.ng
+        #the core path object contains all the path decision
         self.pathes = [[self.ns]]
+        #used to avoid going bouncing between two same nodes
         self.dead_pathes = []
+        #the final result pathes being generated
         self.complete_path = []
         
 
@@ -106,28 +120,47 @@ class Search():
 
     def enqueue(self, new_pathes):
         pass
-
+    #remove the first path
     def dequeue(self):
-        pass
+        self.pathes.pop(0)
+
+#difference between depthfirst and breadthfirst is that 
+class DepthFirstSearch(Search):
+    def __init__(self): 
+        super(DepthFirstSearch, self).__init__()
+
+    #add to end of the queue
+    def enqueue(self, new_pathes):
+        self.dequeue()
+        for index, x in enumerate(new_pathes):
+            self.pathes.insert(index, x)
+
 
 class BreadthFirstSearch(Search):
     def __init__(self): 
         super(BreadthFirstSearch, self).__init__()
 
-    #add to end of the queue
+    #add to start of the queue
     def enqueue(self, new_pathes):
         self.dequeue()
         for x in new_pathes:
             self.pathes.append(x)
 
-    #remove the first path
-    def dequeue(self):
-        self.pathes.pop(0)
+#informed search, use info such as distance / probability
+class BeamSearch(Search):
+    def __init__(self, beam_size): 
+        super(BreadthFirstSearch, self).__init__()
+        self.beam_size = beam_size
+    
+    def enqueue(self, new_pathes):
+        self.dequeue()
+        for x in new_pathes:
+            self.pathes.append(x)
 
 import unittest
-class BreadthFirstTest(unittest.TestCase):
-    def test_breadthfirst(self):
-        service = BreadthFirstSearch()
+class DepthFirstSearchTest(unittest.TestCase):
+    def test_depthfirst(self):
+        service = DepthFirstSearch()
         service.run()
         self.assertTrue(service.complete_path[0].name == "s")
         self.assertTrue(service.complete_path[1].name == "a")

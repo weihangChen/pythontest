@@ -22,6 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="marko\stationarydistribution.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="marko\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="powerof2\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +46,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="marko\" />
     <Folder Include="powerof2\" />
     <Folder Include="search\" />
     <Folder Include="ultility\" />
