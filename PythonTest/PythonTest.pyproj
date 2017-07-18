@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="marko\stationarydistribution.py">
+    <Compile Include="marko\markoservice.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="marko\__init__.py">
