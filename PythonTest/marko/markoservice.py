@@ -58,10 +58,10 @@ class StepByStepTest(unittest.TestCase):
 
 
     #https://www.youtube.com/watch?v=4xfEvRGRBnU&list=PLKG3ExuC02lsnZUJDdOlYJd5CRe3otzq1&index=13
-    def test_sequencetoprob(self):
+    def test_sequencetoprob1(self):
         sequence = ["s","s","s","s","s","r","s","s","s","r","r"]
         total_s = sequence.count("s")
-        #according to the video, last elment is not counted
+        #according to the maximum likehood, last elment is not counted
         total_r = sequence.count("r") - 1
         total_s_s = 0
         total_s_r = 0
@@ -98,7 +98,47 @@ class StepByStepTest(unittest.TestCase):
         self.assertTrue(prob_r_r == (1 / 2))
 
        
+    #https://www.youtube.com/watch?v=Jv0T6H3bFB8&index=16&list=PLKG3ExuC02lsnZUJDdOlYJd5CRe3otzq1
+    def test_sequencetoprob2(self):
+        sequence = ["r","s","s","s","s"]
+        total_s = sequence.count("s") - 1
+        peso = 1
+        variants = len(set(sequence))
+        #according to the maximum likehood, last elment is not counted
+        total_r = sequence.count("r")
+        total_s_s = 0
+        total_s_r = 0
+        total_r_r = 0
+        total_r_s = 0
+
+        walker = sequence[0]
+        sequence_pop_first = list(sequence)
+        sequence_pop_first.pop(0)
+        
+        for x in sequence_pop_first:
+            if x == walker:
+                if x == "s":
+                    total_s_s += 1
+                elif x == "r":
+                    total_r_r +=1
+            else:
+                if x == "s":
+                    total_r_s += 1
+                elif x == "r":
+                    total_s_r +=1
+            walker = x
 
         
+        prob_s_s = (total_s_s + 1) / (total_s + variants)
+        self.assertTrue(prob_s_s == ((3 + 1) / (3 + 2)))
+
+        prob_s_r = (total_s_r + 1) / (total_s + variants)
+        self.assertTrue(prob_s_r == ((0 + 1) / (3 + 2)))
+
+        prob_r_s = (total_r_s + 1) / (total_r + variants)
+        self.assertTrue(prob_r_s == ((1 + 1) / (1 + 2)))
+
+        prob_r_r = (total_r_r + 1) / (total_r + variants)
+        self.assertTrue(prob_r_r == ((0 + 1) / (1 + 2)))
 
        
