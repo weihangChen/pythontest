@@ -10,9 +10,6 @@ class Prob:
         self.state_start = state_start
         self.state_end = state_end
         self.prob = prob
-
-
-
 import unittest
 class StepByStepTest(unittest.TestCase):
     #https://www.youtube.com/watch?v=5uGhAQOs6Aw&index=5&list=PLKG3ExuC02lsnZUJDdOlYJd5CRe3otzq1
