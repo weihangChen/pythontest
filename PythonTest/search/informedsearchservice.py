@@ -14,7 +14,7 @@ class Path():
        
     def getPathStr(self):
         names = [x.name for x in self.nodes]
-        str = "->".join(names)
+        str = "".join(names)
         return str
      
     def getCumulativeProb(self):
@@ -54,7 +54,8 @@ class BeamSearch():
             path.total_prob = node.probability
             self.pathes.append(path)
 
-        for column_letter_candidates in self.letter_matrix[1:-1]:
+        letter_matric_pop_first = self.letter_matrix[1:]
+        for column_letter_candidates in letter_matric_pop_first:
             new_pathes = []
             
             for path in self.pathes:
@@ -69,8 +70,7 @@ class BeamSearch():
 
 import unittest
 class BeamSearchTest(unittest.TestCase):
-    def test_beam(self):
-        dic = ["cat","dog","ape"]
+    def test_beam1(self):
         #column1
         n_x1_y1 = Node("c", 0.6)
         n_x1_y2 = Node("d", 0.8)
@@ -87,6 +87,33 @@ class BeamSearchTest(unittest.TestCase):
         letter_matrix = [[n_x1_y1,n_x1_y2,n_x1_y3],[n_x2_y1,n_x2_y2,n_x2_y3],[n_x3_y1,n_x3_y2,n_x3_y3]]
         service = BeamSearch(2,letter_matrix)
         service.run()
-        print(service.pathes)
-        #path_str = service.complete_path.getPathStr()
-        #self.assertTrue(path_str == "s->a->d->g")
+
+        path1 = service.pathes[0]
+        self.assertTrue(path1.getPathStr() == "dat")
+        self.assertTrue(path1.total_prob == 2.6)
+
+        path2 = service.pathes[1]
+        self.assertTrue(path2.getPathStr() == "dag")
+        self.assertTrue(path2.total_prob == 2.5)
+
+    def test_beam2(self):
+        #column1
+        n_x1_y1 = Node("c", 0.9)
+        n_x1_y2 = Node("d", 0.8)
+        n_x1_y3 = Node("a", 0.7)
+        #column2
+        n_x2_y1 = Node("a", 0.9)
+        n_x2_y2 = Node("o", 0.6)
+        n_x2_y3 = Node("p", 0.7)
+        #column3
+        n_x3_y1 = Node("t", 0.9)
+        n_x3_y2 = Node("g", 0.8)
+        n_x3_y3 = Node("e", 0.7)
+        
+        letter_matrix = [[n_x1_y1,n_x1_y2,n_x1_y3],[n_x2_y1,n_x2_y2,n_x2_y3],[n_x3_y1,n_x3_y2,n_x3_y3]]
+        service = BeamSearch(3,letter_matrix)
+        service.run()
+
+        path = service.pathes[0]
+        self.assertTrue(path.getPathStr() == "cat")
+        self.assertTrue(path.total_prob == 2.7)
