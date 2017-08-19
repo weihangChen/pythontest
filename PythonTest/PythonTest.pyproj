@@ -28,6 +28,10 @@
     <Compile Include="marko\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="multi\powerof2serie.py" />
+    <Compile Include="multi\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="powerof2\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -42,17 +46,26 @@
     <Compile Include="search\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tf\tftest.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tf\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ultility\__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="marko\" />
+    <Folder Include="multi\" />
     <Folder Include="powerof2\" />
     <Folder Include="search\" />
+    <Folder Include="tf\" />
     <Folder Include="ultility\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="requirements.txt" />
     <Content Include="search\path.JPG" />
   </ItemGroup>
   <PropertyGroup>
