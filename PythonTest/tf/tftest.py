@@ -22,7 +22,7 @@ class TFTest(unittest.TestCase):
     #problem encountered, cpu version is always used, not gpu one
     #do not follow the tensorflow install tutorial, pip3 install --upgrade tensorflow-gpu
     #use this instead pip install --upgrade https://storage.googleapis.com/tensorflow/windows/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-win_amd64.whl
-    def test_cpu_gpu(self): 
+    def test_gpu(self): 
         import tensorflow as tf
         with tf.device("/gpu:0"):
             a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
