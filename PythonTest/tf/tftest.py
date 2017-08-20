@@ -81,16 +81,8 @@ class TFTest(unittest.TestCase):
 
        
     def test_gpu_cpu_compare(self):
-        try:
-            self.gpu_cpu_compare("/gpu:0",(8000,8000))
-        except Exception as e:
-            self.logger.error(e)
-        try:     
-            self.gpu_cpu_compare("/cpu:0",(8000,8000))
-        except Exception as e:
-            self.logger.error(e)
-        
-        
+        self.gpu_cpu_compare("/gpu:0",(8000,8000))    
+        self.gpu_cpu_compare("/cpu:0",(8000,8000))
         print('----------------------------')
 
        

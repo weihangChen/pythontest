@@ -28,10 +28,6 @@
     <Compile Include="marko\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="multi\powerof2serie.py" />
-    <Compile Include="multi\__init__.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="powerof2\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -58,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="marko\" />
-    <Folder Include="multi\" />
     <Folder Include="powerof2\" />
     <Folder Include="search\" />
     <Folder Include="tf\" />
