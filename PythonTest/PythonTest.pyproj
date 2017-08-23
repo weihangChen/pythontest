@@ -5,7 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9c9b4f99-cb26-4d21-944b-f39333df2294</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PythonTest.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,13 +29,16 @@
     <Compile Include="marko\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="multi\mltest.py" />
+    <Compile Include="multi\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="powerof2\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="powerof2\powerof2serie.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PythonTest.py" />
     <Compile Include="search\informedsearchservice.py" />
     <Compile Include="search\searchservice.py">
       <SubType>Code</SubType>
@@ -54,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="marko\" />
+    <Folder Include="multi\" />
     <Folder Include="powerof2\" />
     <Folder Include="search\" />
     <Folder Include="tf\" />
